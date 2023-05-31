@@ -25,7 +25,7 @@ pipeline{
 	     steps {
 		  script {
 		      withDockerRegistry(credentialsId: 'dockerregistry') {
-			      docker push smadavan/nodehello:${BUILD_NUMBER}
+			      sh "docker push smadavan/nodehello:${BUILD_NUMBER}"
 		       }
             }
 	 }

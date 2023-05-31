@@ -18,14 +18,14 @@ pipeline{
         }
 	stage('dockerbuild'){
 	    steps{
-		    sh "docker build . -t nodehello:${BUILD_NUMBER}"
+		    sh "docker build . -t smadavan/nodehello:${BUILD_NUMBER}"
             }
         }
 	stage('docker push') {
 	     steps {
 		  script {
 		      withDockerRegistry(credentialsId: 'dockerregistry') {
-			       docker.image().push()
+			      docker push smadavan/nodehello:${BUILD_NUMBER}
 		       }
             }
 	 }

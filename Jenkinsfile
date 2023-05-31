@@ -16,10 +16,18 @@ pipeline{
                sh 'npm install'
             }
         }
-	stage('run'){
+	stage('dockerbuild'){
 	    steps{
-	       sh 'npm start'
+		    sh "docker build . -t nodehello:${BUILD_NUMBER}"
             }
         }
+	stage('docker push') {
+	     steps {
+		  script {
+		       docker.withRegistry() {
+			       docker.image().push()
+		       }
+            }
+	 }
     }
 }

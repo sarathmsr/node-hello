@@ -32,8 +32,8 @@ pipeline{
     }
 	stage('deloyment to EKS'){
         steps {
-            sh "sed -i 's/BUILD_NUMBER/${BUILD_NUMBER}/g' cd/deployment.yaml
-		    sh 'kubectl apply -f cd/deployment.yaml'
+            sh "sed -i 's/BUILD_NUMBER/${BUILD_NUMBER}/g' cd/deployment.yaml"
+	    sh 'kubectl apply -f cd/deployment.yaml'
         }
 	}   
 }
